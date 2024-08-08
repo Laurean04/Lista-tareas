@@ -4,9 +4,10 @@ const lista = document.querySelector('#lista');
 const elemento = document.querySelector('#elemento');
 const input = document.querySelector('#input');
 const botonAgregar = document.querySelector('#botonAgregar');
-const check = 'bi bi-record-circle';
+const check = 'bi-record-circle';
 const tachado = 'tachado';
 const uncheck = 'bi circle';
+
 //variables
 let LIST;
 let id;
@@ -18,6 +19,7 @@ fecha.innerHTML = FECHA.toLocaleDateString('es-MX', {
     month: 'short',
     day: 'numeric'
 });
+//DOM
 
 
 // Función agregar tarea
@@ -52,8 +54,7 @@ function tareaEliminada(element) {
     LIST[element.id].eliminar = true;
 };
 
-
-botonAgregar.addEventListener("click", () =>{
+botonAgregar.addEventListener("click", () => {
     const tarea = input.value;
     if (tarea) {
         agregarTarea(tarea, id, false, false)
@@ -64,22 +65,22 @@ botonAgregar.addEventListener("click", () =>{
             eliminar: false
 
         });
-        localStorage.setItem("TODO",JSON.stringify(LIST));
+        localStorage.setItem("TODO", JSON.stringify(LIST));
         id++;
         input.value = "";
     }
 });
 
-lista.addEventListener("click", function(event){
+lista.addEventListener("click", function (event){
     const element = event.target;
     const elementData = element.attributes.data.value;
     if (elementData == "hecho") {
         tareaRealizada(element);
         
-    } else if (elementData=="eliminar"){
+    } else if (elementData == "eliminar"){
         tareaEliminada(element);        
     };
-    localStorage.setItem("TODO",JSON.stringify(LIST));
+    localStorage.setItem("TODO", JSON.stringify(LIST));
 });
 
 let data = localStorage.getItem("TODO");
