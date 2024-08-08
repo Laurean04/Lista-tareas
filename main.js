@@ -6,7 +6,7 @@ const input = document.querySelector('#input');
 const botonAgregar = document.querySelector('#botonAgregar');
 const check = 'bi-record-circle';
 const tachado = 'tachado';
-const uncheck = 'bi circle';
+const uncheck = 'bi-circle';
 
 //variables
 let LIST;
@@ -52,7 +52,9 @@ function tareaRealizada(element) {
 function tareaEliminada(element) {
     element.parentNode.parentNode.removeChild(element.parentNode);
     LIST[element.id].eliminar = true;
+    
 };
+
 
 botonAgregar.addEventListener("click", () => {
     const tarea = input.value;
@@ -86,7 +88,7 @@ lista.addEventListener("click", function (event){
 let data = localStorage.getItem("TODO");
 if (data) {
     LIST = JSON.parse(data);
-    id = LIST.leng;
+    id = LIST.length;
     cargarLista(LIST);
 
 } else {
